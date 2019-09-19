@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // mLab uri
-const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/test";
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/items";
 
 // Connect to remote mongoDb
 mongoose
