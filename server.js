@@ -24,9 +24,9 @@ mongoose
 // @desc    get all items
 // @access  Public
 app.get('/api/items', (req, res)=>{
-    /**Item.find()
+    Item.find()
         .sort({date: -1})
-        .then(ideas => res.json(ideas)) **/
+        .then(items => res.json(items))
     res.json({msg : "working response"});
 });
 
@@ -34,12 +34,20 @@ app.get('/api/items', (req, res)=>{
 // @desc    add new item
 // @access  Public
 app.post('/api/items', (req, res)=>{
+    const newItem = new Item({
+        item_name : req.body.item_name
+    });
 
-    //const newItem = new Item(req.body.item_name);
-    /**Item.find()
-        .sort({date: -1})
-        .then(ideas => res.json(ideas)) **/
-    res.json({msg : req.body.item_name});
+    newItem.save().then(item => res.json(item));
+});
+
+// @route   DELETE api/items/:id
+// @desc    delete an item
+// @access  Public
+router.delete('/api/items/:id', (req, res)=>{
+    Item.findById(req.params.id)
+        .then(item => item.remove().then(() => res.json({success : true, deletedItem : item})))
+        .catch(err => res.status(404).json({success : false, msg: `No item with id=${req.params.id}`}));
 });
 
 // Get port
