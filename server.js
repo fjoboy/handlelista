@@ -30,6 +30,18 @@ app.get('/api/items', (req, res)=>{
     res.json({msg : "working response"});
 });
 
+// @route   POST api/items
+// @desc    add new item
+// @access  Public
+app.post('/api/items', (req, res)=>{
+
+    //const newItem = new Item(req.body.item_name);
+    /**Item.find()
+        .sort({date: -1})
+        .then(ideas => res.json(ideas)) **/
+    res.json({msg : req.body.item_name});
+});
+
 // Get port
 const PORT = process.env.PORT || 5000;
 
