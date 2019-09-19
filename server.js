@@ -44,7 +44,7 @@ app.post('/api/items', (req, res)=>{
 // @route   DELETE api/items/:id
 // @desc    delete an item
 // @access  Public
-api.delete('/api/items/:id', (req, res)=>{
+app.delete('/api/items/:id', (req, res)=>{
     Item.findById(req.params.id)
         .then(item => item.remove().then(() => res.json({success : true, deletedItem : item})))
         .catch(err => res.status(404).json({success : false, msg: `No item with id=${req.params.id}`}));
