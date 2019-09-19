@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 // item schema
-const Item = require('./schemas/Item');
+const Item = require('/schemas/Item');
 
 // init app
 const app = express();
