@@ -23,7 +23,7 @@ mongoose
 // @route   GET api/items
 // @desc    get all items
 // @access  Public
-router.get('/api/items', (req, res)=>{
+app.get('/api/items', (req, res)=>{
     /**Item.find()
         .sort({date: -1})
         .then(ideas => res.json(ideas)) **/
