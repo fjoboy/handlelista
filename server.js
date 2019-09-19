@@ -27,7 +27,6 @@ app.get('/api/items', (req, res)=>{
     Item.find()
         .sort({date: -1})
         .then(items => res.json(items))
-    res.json({msg : "working response"});
 });
 
 // @route   POST api/items
