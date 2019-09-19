@@ -40,6 +40,15 @@ app.post('/api/items', (req, res)=>{
     newItem.save().then(item => res.json(item));
 });
 
+// @route   DELETE api/items
+// @desc    delete all items
+// @access  Public
+app.delete('/api/items', (req, res)=>{
+    Item.remove({})
+        .then(() => res.json({"msg" : "removed all items"})
+        .catch(err => res.status(404).json({success : false, msg: "could note remove all items"})));
+});
+
 // @route   DELETE api/items/:id
 // @desc    delete an item
 // @access  Public
