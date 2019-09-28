@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+// TODO: _remove_ from production
+const cors = require("cors");
+
 // item schema
 const Item = require('./schemas/Item');
 
@@ -10,6 +13,10 @@ const app = express();
 
 // bodyParser middleware
 app.use(bodyParser.json());
+
+// TODO _remove_ from production
+// app.use(cors());
+// Cors middleware
 
 // mLab uri
 const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/items";

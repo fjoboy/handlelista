@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { Item } from './item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  private itemsUrl = "/api/items"; 
+  private itemsUrl = "http://localhost:5000/api/items"; 
 
   constructor(private http: HttpClient) { }
 
-  getItems(){
-    return this.http.get(this.itemsUrl);
+  getItems(): Observable<Item[]>{
+    return this.http.get<Item[]>(this.itemsUrl);
+  }
+
+  deleteItem(id: string): Observable<{}>{
+    const url = `${this.itemsUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
+  deleteAllItems(): Observable<{}>{
+    return this.http.delete(this.itemsUrl);
+  }
+
+  addItem(item: Item): Observable<Item>{
+    return this.http.post<Item>(this.itemsUrl, item);
   }
 
 }

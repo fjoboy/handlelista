@@ -1,3 +1,18 @@
-<ul>
-    <li *ngFor="let item of items"> {{ item.item_name }}</li>
-</ul>
+<section class="item-section">
+    <ul class=list-item-container>
+        <li class="list-item" *ngFor="let item of items"> <span>{{ item.item_name }}</span><i class="icon ion-md-close delete-item-btn" (click)="deleteItem(item)"></i></li>
+    </ul>
+    <div id="input-and-buttons-container">
+
+    <form id="item-input-form" [formGroup]="addItemForm" (ngSubmit)="onSubmit(addItemForm.value)">
+
+        <div class="item-input-container">
+            <input id="itemName" type="text" formControlName="itemName" placeholder="Varenavn">
+            <button id="add-item-btn" class="button" type="submit">Legg til</button>
+        </div>
+        
+    </form>
+
+    <button class="button btn-delete" (click)="deleteAllItems()">Tøm liste</button>
+</div>
+</section>
