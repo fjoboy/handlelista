@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 // TODO: _remove_ from production
-const cors = require("cors");
+//const cors = require("cors");
 
 // item schema
 const Item = require('./schemas/Item');
