@@ -10,7 +10,8 @@ import { Item } from './item';
   providedIn: 'root'
 })
 export class ItemService {
-  private itemsUrl = "http://localhost:5000/api/items"; 
+  // private testApiUrl = private itemsUrl = "http://localhost:5000/api/items"; 
+  private itemsUrl = "/api/items"; 
 
   constructor(private http: HttpClient) { }
 
